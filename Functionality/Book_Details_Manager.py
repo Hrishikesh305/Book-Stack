@@ -1,6 +1,4 @@
-def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagory):
-
-    def CodeMaker(Languages_Abbreviations, Category_Abbreviations, Language, Category, Spreadsheet):
+def CodeMaker(Languages_Abbreviations, Category_Abbreviations, Language, Category, Spreadsheet):
         from openpyxl import load_workbook
         if Language in Languages_Abbreviations and Category in Category_Abbreviations:
             Current_Workbook = load_workbook(Spreadsheet)
@@ -13,6 +11,9 @@ def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagor
             return Code
         else:
             return 1
+        
+
+def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagory):
 
     Prohibited = ['', ' ']
 
