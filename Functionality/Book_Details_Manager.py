@@ -8,6 +8,7 @@ def CodeMaker(Languages_Abbreviations, Category_Abbreviations, Language, Categor
             Language_Ab = Languages_Abbreviations[Language]
             Category_Ab = Category_Abbreviations[Category]
             Code = f'{Language_Ab}-{Category_Ab}/{Id_Number}'
+            print(Code)
             return Code
         else:
             return 1
@@ -19,7 +20,7 @@ def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagor
 
     # TODO: Outsource the following three variables.
     Languages_Abbreviations = {'English': 'E', 'Malayalam': 'M', 'Hindi': 'H'}
-    Spreadsheet_Addresses = {'M': 'Malayalam_books.xlsx', 'E': 'English_books.xlsx', 'H': 'Hindi_books.xlsx'}
+    Spreadsheet_Addresses = {'M': 'Spreadsheets\Book_Details\Malayalam_books.xlsx', 'E': 'Spreadsheets\Book_Details\English_books.xlsx', 'H': 'Spreadsheets\Book_Details\Hindi_books.xlsx'}
     Category_Abbreviations = {'Fiction': 'FC', 'NonFiction': 'NF', 'SelfHelp': 'SF', 'Magazine': 'MG'}
 
     if Book_Name not in Prohibited and Author not in Prohibited and Publisher not in Prohibited:
@@ -36,7 +37,7 @@ def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagor
                     worksheet.append(Book_Details)
                     print(Book_Details)
                 else:
-                    return 1
+                    return [1, "The language or the category is wrong :("]
             else:
                 return 1
         else:
@@ -49,7 +50,7 @@ def FetchBookDetails(Book_Code):
     book_details = []
     from openpyxl import load_workbook
     Categories = {'FC': 'Fiction', 'NF': 'NonFiction', 'SH': 'SelfHelp', 'MG': 'Magazine'}
-    Languages = {'M': 'Malayalam_books.xlsx', 'E': 'English_books.xlsx'}
+    Languages = {'M': 'Functionality\Malayalam_books.xlsx', 'E': 'Functionality/English_books.xlsx'}
     while True:
         if str(type(Book_Code)) == "<class 'str'>":
             if not Book_Code == '' and not Book_Code == ' ':
@@ -77,3 +78,5 @@ def FetchBookDetails(Book_Code):
                 return [1, "You Didn't write any code :("]
         else:
             return [1, 'Please only enter a string']
+# testing code
+#insert_book("Book_Name", 10, "Author", "Publisher", "Made_For", "Malayalam", 'Magazine')
