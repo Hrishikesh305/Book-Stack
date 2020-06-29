@@ -1,21 +1,22 @@
-def CodeMaker(Languages_Abbreviations, Category_Abbreviations, Language, Category, Spreadsheet):
+# Section1: Inserting and Getting Book data #
+def CodeMaker(LanguagesAbbreviations, CategoryAbbreviations, Language, Category, Spreadsheet):
+    #makes a unique ID for a book using its language, category and its spreadsheet.
         from openpyxl import load_workbook
-        if Language in Languages_Abbreviations and Category in Category_Abbreviations:
+        if Language in LanguagesAbbreviations and Category in CategoryAbbreviations:
             Current_Workbook = load_workbook(Spreadsheet)
             Current_Worksheet = Current_Workbook[Category]
             Last_Occupied_Row = Current_Worksheet.max_row
             Id_Number = Last_Occupied_Row + 1
-            Language_Ab = Languages_Abbreviations[Language]
-            Category_Ab = Category_Abbreviations[Category]
+            Language_Ab = LanguagesAbbreviations[Language]
+            Category_Ab = CategoryAbbreviations[Category]
             Code = f'{Language_Ab}-{Category_Ab}/{Id_Number}'
             print(Code)
             return Code
         else:
             return 1
-        
 
-def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagory):
-
+def InsertBook(BookName, Price, Author, Publisher, Audience, Language, Catagory):
+    # inserts a book into a spreadsheet using its data (It takes Languages like "Malayalam" not M).
     Prohibited = ['', ' ']
 
     # TODO: Outsource the following three variables.
@@ -23,16 +24,16 @@ def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagor
     Spreadsheet_Addresses = {'M': 'Spreadsheets\Book_Details\Malayalam_books.xlsx', 'E': 'Spreadsheets\Book_Details\English_books.xlsx', 'H': 'Spreadsheets\Book_Details\Hindi_books.xlsx'}
     Category_Abbreviations = {'Fiction': 'FC', 'NonFiction': 'NF', 'SelfHelp': 'SF', 'Magazine': 'MG'}
 
-    if Book_Name not in Prohibited and Author not in Prohibited and Publisher not in Prohibited:
+    if BookName not in Prohibited and Author not in Prohibited and Publisher not in Prohibited:
         if Catagory.lower() != 'select' and Language != 'select':
             if Language in Languages_Abbreviations and Catagory in Category_Abbreviations:
                 from openpyxl import load_workbook
                 workbook = load_workbook(Spreadsheet_Addresses[Languages_Abbreviations[Language]])
                 worksheet = workbook[Catagory]
-                Book_Details = [Book_Name, Price,
+                Book_Details = [BookName, Price,
                                CodeMaker(Languages_Abbreviations, Category_Abbreviations, Language,
                                          Catagory, Spreadsheet_Addresses[Languages_Abbreviations[Language]]), Author,
-                               Publisher, Made_For]
+                               Publisher, Audience]
                 if not Book_Details[2] == 1:
                     worksheet.append(Book_Details)
                     print(Book_Details)
@@ -45,28 +46,29 @@ def insert_book(Book_Name, Price, Author, Publisher, Made_For, Language, Catagor
     else:
         return 1
 
-def FetchBookDetails(Book_Code):
-#Returns a list of book detail from a book code.
+def FetchBookDetails(BookCode):
+    #Returns a list of book detail from a book code.
+    # can be used to autofill details into forms
     book_details = []
     from openpyxl import load_workbook
     Categories = {'FC': 'Fiction', 'NF': 'NonFiction', 'SH': 'SelfHelp', 'MG': 'Magazine'}
     Languages = {'M': 'Functionality\Malayalam_books.xlsx', 'E': 'Functionality/English_books.xlsx'}
     while True:
-        if str(type(Book_Code)) == "<class 'str'>":
-            if not Book_Code == '' and not Book_Code == ' ':
-                if '-' in Book_Code and '/' in Book_Code:
-                    Book_Code = Book_Code.split('-')
-                    LanguageIndex = Book_Code[1].split('/')
-                    Book_Code[1] = LanguageIndex[0]
-                    Book_Code.append(LanguageIndex[1])
-                    Book_Code[1] = Book_Code[1].upper()
-                    Book_Code[2] = Book_Code[2].upper()
-                    if Book_Code[0] in Languages:
-                        if Book_Code[1] in Categories:
-                            workbook = load_workbook(Languages[Book_Code[0]])
-                            worksheet = workbook[Categories[Book_Code[1]]]
+        if str(type(BookCode)) == "<class 'str'>":
+            if not BookCode == '' and not BookCode == ' ':
+                if '-' in BookCode and '/' in BookCode:
+                    BookCode = BookCode.split('-')
+                    LanguageIndex = BookCode[1].split('/')
+                    BookCode[1] = LanguageIndex[0]
+                    BookCode.append(LanguageIndex[1])
+                    BookCode[1] = BookCode[1].upper()
+                    BookCode[2] = BookCode[2].upper()
+                    if BookCode[0] in Languages:
+                        if BookCode[1] in Categories:
+                            workbook = load_workbook(Languages[BookCode[0]])
+                            worksheet = workbook[Categories[BookCode[1]]]
                             for cell in range(1, 7):
-                                book_details.append(worksheet.cell(int(Book_Code[2]) + 1, column=cell).value)
+                                book_details.append(worksheet.cell(int(BookCode[2]) + 1, column=cell).value)
                             return book_details
                         else:
                             return [1, 'The catagory is wrong :(']
@@ -78,5 +80,6 @@ def FetchBookDetails(Book_Code):
                 return [1, "You Didn't write any code :("]
         else:
             return [1, 'Please only enter a string']
-# testing code
-#insert_book("Book_Name", 10, "Author", "Publisher", "Made_For", "Malayalam", 'Magazine')
+# --End of Section 1-- #
+
+# Section2: Book Statistics

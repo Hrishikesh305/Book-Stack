@@ -1,6 +1,7 @@
-def GetSpreadsheetDetails():
+# Section 1: Language and catagory tools 
+def GetLanguageSpreadsheetAdresses():
     SpreadsheetAdresses = {}
-    with open("TextData/LibraryLanguages.txt") as LLanguage:
+    with open("BasicProgramData/LibraryLanguages.txt") as LLanguage:
         for line in LLanguage:
             #line is "language/spreadsheetAdress.xlsx"
             if "/" in line and ".xlsx" in line:
@@ -9,6 +10,7 @@ def GetSpreadsheetDetails():
             else:
                 pass
     return SpreadsheetAdresses
+# -- end of section 1 --
 
 
 
