@@ -30,6 +30,9 @@ Examples of unacceptable behavior by participants include:
  address, without explicit permission
 * Other conduct which could reasonably be considered inappropriate in a
  professional setting
+* Presenting others work as your own and/or violationg copyright laws.
+* Spreading any false messages which are not backed by science knowingly or unknowingly.
+
 
 ## Our Responsibilities
 
@@ -49,8 +52,7 @@ This Code of Conduct applies both within project spaces and in public spaces
 when an individual is representing the project or its community. Examples of
 representing a project or community include using an official project e-mail
 address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
-further defined and clarified by project maintainers.
+representative at an online or offline event.
 
 ## Enforcement
 
