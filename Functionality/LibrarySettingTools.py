@@ -11,6 +11,3 @@ def GetLanguageSpreadsheetAdresses():
                 pass
     return SpreadsheetAdresses
 # -- end of section 1 --
-
-
-
