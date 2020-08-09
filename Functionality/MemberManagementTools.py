@@ -6,6 +6,7 @@ def borrowbook(UserID, ListOfBookCodes):
     ProhibitedCharecters = ['', ' ']
     ColumnsNotNeeded = [1, 4] # Columns in the member details spreadsheet
     MemberDetails = []
+    AllBookDetails = []
     if not UserID in ProhibitedCharecters:
         try:
             int(UserID)
@@ -25,12 +26,12 @@ def borrowbook(UserID, ListOfBookCodes):
         import BookManagementTools
         for BookCode in ListOfBookCodes:
             BookDetails = BookManagementTools.FetchBookDetails(str(BookCode))
-
-        if not BookDetails[0] == 1:
+            AllBookDetails.append(BookDetails)
             f = open('BasicProgramData\TemoraryStorage\BorrowerDetails.txt', 'r+')
             f.truncate(0)
             f.close()
-            print('sucsess')
+        else:
+            return(BookDetails[2])
     else:
         return [1, 'Please type in a integer! :(']
 
