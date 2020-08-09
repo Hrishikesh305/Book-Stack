@@ -4,12 +4,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("Borrow_boo")
-        MainWindow.resize(665, 451)
-        MainWindow.setStyleSheet("background: black;\n"
+    def setupUi(self, BorrowBook):
+        BorrowBook.setObjectName("Borrow_book")
+        BorrowBook.resize(665, 451)
+        BorrowBook.setStyleSheet("background: black;\n"
 "color: white")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(BorrowBook)
         self.centralwidget.setObjectName("centralwidget")
         self.UserIDLabel = QtWidgets.QLabel(self.centralwidget)
         self.UserIDLabel.setGeometry(QtCore.QRect(60, 50, 81, 21))
@@ -48,17 +48,17 @@ class Ui_MainWindow(object):
         self.BorrowBookButton.setObjectName("BorrowBookButton")
         self.BorrowBookButton.clicked.connect(self.click)
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        BorrowBook.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(BorrowBook)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 665, 26))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        BorrowBook.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(BorrowBook)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        BorrowBook.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(BorrowBook)
+        QtCore.QMetaObject.connectSlotsByName(BorrowBook)
     def click(self):
         print ("It works")
 
