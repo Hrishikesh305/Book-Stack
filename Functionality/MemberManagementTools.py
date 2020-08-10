@@ -22,16 +22,25 @@ def borrowbook(UserID, ListOfBookCodes):
                 MemberDetails.append(cell.value)
             else:
                 pass
-            
+        #Prepare the borrowed book Details    
         import BookManagementTools
         for BookCode in ListOfBookCodes:
             BookDetails = BookManagementTools.FetchBookDetails(str(BookCode))
             AllBookDetails.append(BookDetails)
-            f = open('BasicProgramData\TemoraryStorage\BorrowerDetails.txt', 'r+')
-            f.truncate(0)
-            f.close()
-        else:
-            return(BookDetails[2])
+
+        # Empties textfile from last codes
+        f = open('BasicProgramData\TemoraryStorage\BorrowerDetails.txt', 'r+')
+        f.truncate(0)
+        f.close()
+        # Append details    
+        with open("BasicProgramData\TemoraryStorage\BorrowerDetails.txt", 'w') as TempFile:
+            for Detail in MemberDetails:
+                TempFile.write(str(Detail) + ', ')
+
+            for Book in AllBookDetails:
+                TempFile.write(f'\n')
+                for Detail in Book:
+                    TempFile
     else:
         return [1, 'Please type in a integer! :(']
 
