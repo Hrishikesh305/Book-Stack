@@ -1,3 +1,2 @@
-with open('BasicProgramData\TemoraryStorage\BorrowerDetails.txt') as tempfile:
-    for line in tempfile:
-        line = ''
+import re
+print (re.findall(r"[\w']+", date))

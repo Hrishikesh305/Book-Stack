@@ -2,7 +2,7 @@
 
 #--End Of Section 1--
 #Section2: Book Borrowing
-def borrowbook(UserID, ListOfBookCodes):
+def BorrowBookbyMember(UserID, ListOfBookCodes):
     ProhibitedCharecters = ['', ' ']
     ColumnsNotNeeded = [1, 4] # Columns in the member details spreadsheet
     MemberDetails = []
@@ -35,14 +35,18 @@ def borrowbook(UserID, ListOfBookCodes):
         # Append details    
         with open("BasicProgramData\TemoraryStorage\BorrowerDetails.txt", 'w') as TempFile:
             for Detail in MemberDetails:
-                TempFile.write(str(Detail) + ', ')
-
+                TempFile.write(str(Detail) + ',')
+            BookNumber = 0
             for Book in AllBookDetails:
                 TempFile.write(f'\n')
-                for Detail in Book:
-                    TempFile
+                if not Book[0] == 1:
+                    for Detail in Book:
+                        TempFile.write(str(Detail) + ',')
+                else:
+                    TempFile.write(str(Book[0]) + ListOfBookCodes[BookNumber])
+                BookNumber += 1
     else:
         return [1, 'Please type in a integer! :(']
 
 #--End Of Section 2--
-borrowbook('1', ['M-FC/1', 'M-NF/1'])
+print(BorrowBookbyMember(1,['e-nf/1', 'e-fc/1']))
