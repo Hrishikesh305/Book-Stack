@@ -3,7 +3,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 # Now do your import
-from Functionality.MemberManagementTools import *
+from Functionality.MMT import *
 
 
 class Ui_MainWindow(object):
@@ -63,7 +63,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(BorrowBook)
         QtCore.QMetaObject.connectSlotsByName(BorrowBook)
     def click(self):
-        print(BorrowBookbyMember(1,['e-nf/1', 'e-fc/1']))
+        BookD = self.AllBookDetailsText.toPlainText()
+        ID = self.UserIDTextbox.text()
+        print(BorrowBookbyMember(ID, BookD))
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

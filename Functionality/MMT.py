@@ -25,9 +25,9 @@ def BorrowBookbyMember(BorrowerID, ListOfBookCodes):
         else:
             pass
     #Prepare the borrowed book Details    
-    import BMT
+    import Functionality.BMT
     for BookCode in ListOfBookCodes:
-        BookDetails = BMT.FetchBookDetails(str(BookCode))
+        BookDetails = Functionality.BMT.FetchBookDetails(str(BookCode))
         BookAndErrorDetails.append(BookDetails)
 
     # Empties textfile from last codes
@@ -45,8 +45,5 @@ def BorrowBookbyMember(BorrowerID, ListOfBookCodes):
                 for Detail in Book:
                     TempFile.write(str(Detail) + ',')
             else:
-                TempFile.write(str(Book[0]) + ListOfBookCodes[BookNumber])
-            BookNumber += 1
-
-#--End Of Section 2--
-print(BorrowBookbyMember(1,['e-nf/1', 'e-fc/1']))
+                TempFile.write(str(BookAndErrorDetails[1]))
+                pass
