@@ -65,7 +65,8 @@ class Ui_MainWindow(object):
     def click(self):
         BookD = self.AllBookDetailsText.toPlainText()
         ID = self.UserIDTextbox.text()
-        print(BorrowBookbyMember(ID, BookD))
+        output = BorrowBookbyMember(ID, BookD)
+        print(output)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -74,8 +75,6 @@ class Ui_MainWindow(object):
         self.UserIDLabel.setText(_translate("MainWindow", "User ID:"))
         self.BookCodeLabel.setText(_translate("MainWindow", "Book Codes (Seperate each book code with commas):"))
         self.BorrowBookButton.setText(_translate("MainWindow", "Borrow Book"))
-
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

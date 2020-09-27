@@ -1,2 +1,3 @@
-import re
-print (re.findall(r"[\w']+", date))
+bookc = "fjgnjsvn,jfdbvn jv "
+bookc = bookc.split(',')
+print(bookc)

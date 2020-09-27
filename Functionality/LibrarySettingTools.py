@@ -14,7 +14,7 @@ def GetLanguageSpreadsheetAdresses():
 def GetCategoryFullForms():
     CategoryNames = {}
     with open("BasicProgramData/LibraryCategories.txt") as LCategories:
-        for line in LLanguage:
+        for line in LCategories:
             #line is "CategoryAbbriviation/CategoryFullForm"
             if "/" in line:
                 line = line.split("/")

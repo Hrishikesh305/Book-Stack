@@ -26,6 +26,7 @@ def BorrowBookbyMember(BorrowerID, ListOfBookCodes):
             pass
     #Prepare the borrowed book Details    
     import Functionality.BMT
+    ListOfBookCodes = ListOfBookCodes.split(', ')
     for BookCode in ListOfBookCodes:
         BookDetails = Functionality.BMT.FetchBookDetails(str(BookCode))
         BookAndErrorDetails.append(BookDetails)
@@ -45,5 +46,6 @@ def BorrowBookbyMember(BorrowerID, ListOfBookCodes):
                 for Detail in Book:
                     TempFile.write(str(Detail) + ',')
             else:
-                TempFile.write(str(BookAndErrorDetails[1]))
-                pass
+                return BookAndErrorDetails
+                
+    return [0, 'no problem']

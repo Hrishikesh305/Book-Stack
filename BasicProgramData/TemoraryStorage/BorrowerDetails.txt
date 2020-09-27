@@ -1,6 +1,2 @@
 Mr. Manu,500,2030-08-01 00:00:00,False,
-[1, 'The code is not correctly written :(']
-[1, 'The code is not correctly written :(']
-[1, 'The code is not correctly written :(']
-[1, 'The code is not correctly written :(']
-[1, 'The code is not correctly written :(']
+Book Name,10,ecc,assuran,mr.books,everyone,
